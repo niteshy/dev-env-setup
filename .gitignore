@@ -1,0 +1,2 @@
+# ignore the private files to checked in the repo
+src/dotfiles/.aliases/private/*

@@ -1,0 +1,4 @@
+
+# Git aliases
+alias git_delete_br='f() { [ "$1" ] && git branch -d $1; git push -d origin $1; }'
+

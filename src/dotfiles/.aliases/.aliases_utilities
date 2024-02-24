@@ -1,0 +1,4 @@
+
+# Generic utilities alias
+alias ll="ls -lrt"
+alias vi="vim"
