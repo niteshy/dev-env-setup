@@ -1,6 +1,4 @@
 [user]
-  name = 
-  email =
 [core]
   editor = vim
   whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
@@ -113,7 +111,7 @@
   ma = merge --abort
   mc = merge --continue
   ms = merge --skip
-        mff = merge --ff-only
+  mff = merge --ff-only
   #############
   o = checkout
   co = checkout
