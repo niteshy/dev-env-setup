@@ -327,19 +327,20 @@ read response
 if [ "$response" != "${response#[Yy]}" ]; then
   _print_run mkdir -p $HOME/.aliases
 
-  sh -c 'curl -s https://raw.githubusercontent.com/niteshy/dev-env-setup/main/src/dotfiles/.aliases/.aliases.custom_functions.bashrc > $HOME/.aliases/.aliases.custom_functions.bashrc'
-  sh -c 'curl -s https://raw.githubusercontent.com/niteshy/dev-env-setup/main/src/dotfiles/.aliases/.aliases.docker.bashrc > $HOME/.aliases/.aliases.docker.bashrc'
-  sh -c 'curl -s https://raw.githubusercontent.com/niteshy/dev-env-setup/main/src/dotfiles/.aliases/.aliases.git.bashrc > $HOME/.aliases/.aliases.git.bashrc'
-  sh -c 'curl -s https://raw.githubusercontent.com/niteshy/dev-env-setup/main/src/dotfiles/.aliases/.aliases.kubernetes.bashrc > $HOME/.aliases/.aliases.kubernetes.bashrc'
-  sh -c 'curl -s https://raw.githubusercontent.com/niteshy/dev-env-setup/main/src/dotfiles/.aliases/.aliases.utilities.bashrc > $HOME/.aliases/.aliases.utilities.bashrc'
+  sh -c 'curl -s https://raw.githubusercontent.com/niteshy/dev-env-setup/main/src/dotfiles/.aliases/.custom.aliases.bash > $HOME/.aliases/.custom.aliases.bash'
+  sh -c 'curl -s https://raw.githubusercontent.com/niteshy/dev-env-setup/main/src/dotfiles/.aliases/.docker.aliases.sh > $HOME/.aliases/.docker.aliases.sh'
+  sh -c 'curl -s https://raw.githubusercontent.com/niteshy/dev-env-setup/main/src/dotfiles/.aliases/.general.aliases.bash > $HOME/.aliases/.general.aliases.bash'
+  sh -c 'curl -s https://raw.githubusercontent.com/niteshy/dev-env-setup/main/src/dotfiles/.aliases/.git.aliases.sh > $HOME/.aliases/.git.aliases.sh'
+  sh -c 'curl -s https://raw.githubusercontent.com/niteshy/dev-env-setup/main/src/dotfiles/.aliases/.kubernetes.aliases.sh > $HOME/.aliases/.kubernetes.aliases.sh'
   sh -c 'curl -s https://raw.githubusercontent.com/niteshy/dev-env-setup/main/src/dotfiles/.jq > $HOME/.jq'
+
 fi
 
 function update_bashrc {
   printf '%s\n' "${BLUE}Looking for an existing bash config...${NORMAL}"
   if [[ -f ~/.bashrc || -h ~/.bashrc ]]; then
     # shellcheck disable=SC2155
-    local bashrc_backup=~/.bashrc.des-backup-$(date +%Y%m%d%H%M%S)
+    local bashrc_backup=~/.bashrc.cmb-backup-$(date +%Y%m%d%H%M%S)
     printf '%s\n' "${YELLOW}Found ~/.bashrc.${NORMAL} ${GREEN}Backing up to $bashrc_backup${NORMAL}"
     _print_run mv ~/.bashrc "$bashrc_backup"
   fi

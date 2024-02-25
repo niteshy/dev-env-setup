@@ -17,16 +17,16 @@ include () {
 }
 
 # Public functions, aliases and configurations
-include ~/.aliases/.aliases.custom_functions.bashrc
-include ~/.aliases/.aliases.docker.bashrc
-include ~/.aliases/.aliases.git.bashrc
-include ~/.aliases/.aliases.kubernetes.bashrc
-include ~/.aliases/.aliases.utilities.bashrc
+include ~/.aliases/.custom.aliases.bash
+include ~/.aliases/.docker.aliases.sh
+include ~/.aliases/.general.aliases.bash
+include ~/.aliases/.git.aliases.sh
+include ~/.aliases/.kubernetes.aliases.sh
 
 # Personal or private aliases, to avoid mistakenly adding them (added them to .gitignore)
-include ~/.aliases/private/.aliases.cldr.bashrc
-include ~/.aliases/private/.aliases.cldr.bashrc
-include ~/.aliases/private/.aliases.dc.bashrc
+include ~/.aliases/private/.cldr.aliases.bash
+include ~/.aliases/private/.misc.aliases.bash
+include ~/.aliases/private/.dc.aliases.bash
 
 
 #   -------------------------------
