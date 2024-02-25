@@ -1,9 +1,5 @@
 
 
-Use the [vim-plug](https://github.com/junegunn/vim-plug) to install the plugin in vim. 
-Use tips https://github.com/junegunn/vim-plug/wiki/tips#automatic-installation
-
-
 
 ## To setup Mac
 
@@ -11,4 +7,7 @@ Use tips https://github.com/junegunn/vim-plug/wiki/tips#automatic-installation
 2. Install bash configuration manager ie [oh-my-bash](https://github.com/ohmybash/oh-my-bash) via ``bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"``
 
     Note: It will replace your `~/.bashrc`, don't worry the next step will further overwrite it.
-3. Run the setup `bash src/scripts/setup-mac.sh`
+3. Customize vim, we are going to use [vim-plug](https://github.com/junegunn/vim-plug) to install the plugin in vim.
+   There are few useful [tips](https://github.com/junegunn/vim-plug/wiki/tips#automatic-installation) 
+4. Run the setup `bash src/scripts/setup-mac.sh`
+

@@ -54,6 +54,15 @@ beginDeploy() {
   echo "${bold}$1${normal}"
 }
 
+function _print_run {
+  if [[ :$install_opts: == *:dry-run:* ]]; then
+    printf '%s\n' "$BOLD$GREEN[dryrun]$NORMAL $BOLD$*$NORMAL"
+  else
+    printf '%s\n' "$BOLD\$ $*$NORMAL"
+    command "$@"
+  fi
+}
+
 check_install_tools() {
   local -n _utility_name=$1
   local -n _is_cask_based=$2
@@ -316,6 +325,8 @@ beginDeploy "############# COPYING ALIASES #################"
 echo -n "Do you wish to copy aliases (${bold}${green}y${reset}/${bold}${red}n${reset})? "
 read response
 if [ "$response" != "${response#[Yy]}" ]; then
+  _print_run mkdir -p $HOME/.aliases
+
   sh -c 'curl -s https://raw.githubusercontent.com/niteshy/dev-env-setup/main/src/dotfiles/.aliases/.aliases.custom_functions.bashrc > $HOME/.aliases/.aliases.custom_functions.bashrc'
   sh -c 'curl -s https://raw.githubusercontent.com/niteshy/dev-env-setup/main/src/dotfiles/.aliases/.aliases.docker.bashrc > $HOME/.aliases/.aliases.docker.bashrc'
   sh -c 'curl -s https://raw.githubusercontent.com/niteshy/dev-env-setup/main/src/dotfiles/.aliases/.aliases.git.bashrc > $HOME/.aliases/.aliases.git.bashrc'
@@ -324,14 +335,24 @@ if [ "$response" != "${response#[Yy]}" ]; then
   sh -c 'curl -s https://raw.githubusercontent.com/niteshy/dev-env-setup/main/src/dotfiles/.jq > $HOME/.jq'
 fi
 
+function update_bashrc {
+  printf '%s\n' "${BLUE}Looking for an existing bash config...${NORMAL}"
+  if [[ -f ~/.bashrc || -h ~/.bashrc ]]; then
+    # shellcheck disable=SC2155
+    local bashrc_backup=~/.bashrc.des-backup-$(date +%Y%m%d%H%M%S)
+    printf '%s\n' "${YELLOW}Found ~/.bashrc.${NORMAL} ${GREEN}Backing up to $bashrc_backup${NORMAL}"
+    _print_run mv ~/.bashrc "$bashrc_backup"
+  fi
+  printf '%s\n' "${BLUE}Copying the Bashrc template to ~/.bashrc${NORMAL}"
+}
 
 beginDeploy "############# SETUP BASH PROFILE #############"
 echo -n "Do you wish to setup bash profile (${bold}${green}y${reset}/${bold}${red}n${reset})? "
 read response
 if [ "$response" != "${response#[Yy]}" ]; then
-#   sh -c 'curl -s https://raw.githubusercontent.com/niteshy/dev-env-setup/main/src/dotfiles/.bashrc > $HOME/.bashrc'
-  echo "copied"
-  source ~/.bashrc
+  update_bashrc
+  sh -c 'curl -s https://raw.githubusercontent.com/niteshy/dev-env-setup/main/src/dotfiles/.bashrc > $HOME/.bashrc'
+  source $HOME/.bashrc
 fi
 
 runtime=$((($(date +%s)-$start)/60))
