@@ -220,6 +220,10 @@ DeveloperUtilitiesList=(
   wget
   tree
   bash-completion
+  vim
+  nvim
+  git
+  tig
 #  httpie
 #  netcat
 )
@@ -355,6 +359,14 @@ if [ "$response" != "${response#[Yy]}" ]; then
   sh -c 'curl -s https://raw.githubusercontent.com/niteshy/dev-env-setup/main/src/dotfiles/.bashrc > $HOME/.bashrc'
   source $HOME/.bashrc
 fi
+
+beginDeploy "############# VIM PROFILE #############"
+echo -n "Do you wish to update vimrc (${bold}${green}y${reset}/${bold}${red}n${reset})? "
+read response
+if [ "$response" != "${response#[Yy]}" ]; then
+  sh -c 'curl -s https://raw.githubusercontent.com/niteshy/dev-env-setup/main/src/dotfiles/.vimrc > $HOME/.vimrc'
+fi
+
 
 runtime=$((($(date +%s)-$start)/60))
 beginDeploy "############# Total Setup Time = $runtime Minutes #############"

@@ -184,6 +184,8 @@ export LANG=en_US.UTF-8
 #   ------------------------------------------------------------
 export PATH="$PATH:/usr/local/bin/:$HOME/bin"
 export PATH="/usr/bin:/sw/bin/:/usr/local/bin:/usr/local/:/usr/local/sbin:/usr/local/mysql/bin:$PATH"
+# Add intellij to the path
+export PATH="$PATH:/Applications/IntelliJ IDEA.app/Contents/MacOS/"
 
 #   Set Default Editor (change 'vim' to the editor of your choice)
 #   ------------------------------------------------------------
