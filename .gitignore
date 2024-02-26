@@ -9,6 +9,10 @@
 #################################################
 src/dotfiles/.aliases/private/*
 
+# ignore nvim compiled plugin directory
+src/dotfiles/.config/nvim/plugin/*
+src/dotfiles/.config/nvim/plugin/packer_compiled.lua
+
 # OS generated files #
 ######################
 .DS_Store
