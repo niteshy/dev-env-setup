@@ -1,3 +1,4 @@
+#!/bin/bash
 
 # Make sure important variables exist if not already defined
 #
@@ -159,6 +160,7 @@ tool_type="Python Developer tools"
 is_cask_based="no"
 PythonUtilitiesList=(
   python
+  pyenv
 )
 check_install_tools tool_type is_cask_based PythonUtilitiesList
 
@@ -220,6 +222,7 @@ DeveloperUtilitiesList=(
   wget
   tree
   bash-completion
+  maven
   vim
   nvim
   git
@@ -232,7 +235,7 @@ check_install_tools tool_type is_cask_based DeveloperUtilitiesList
 function post_utility_setup() {
   echo '
 # BASH-COMPLETION CONFIG
-[[ -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]] && . "$(brew --prefix)/etc/profile.d/bash_completion.sh"' >> $HOME/.bash_profile
+  [[ -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]] && . "$(brew --prefix)/etc/profile.d/bash_completion.sh"' >> $HOME/.bash_profile
 }
 post_utility_setup
 
